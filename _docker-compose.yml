@@ -1,0 +1,16 @@
+version: '3.8'
+
+networks:
+    localdev:
+        name: localdev
+
+services:
+    main-api:
+        build:
+            context: /
+            dockerfile: TwelveFactor/Dockerfile
+        restart: always
+        ports:
+            - "6000:80"
+        networks:
+            - localdev
