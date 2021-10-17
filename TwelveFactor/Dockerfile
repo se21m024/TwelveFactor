@@ -1,20 +1,19 @@
-﻿FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
-WORKDIR /app
-EXPOSE 80
-EXPOSE 443
-
+﻿# First stage
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
-WORKDIR /src
-COPY ["TwelveFactor/TwelveFactor.csproj", "TwelveFactor/"]
-RUN dotnet restore "TwelveFactor/TwelveFactor.csproj"
-COPY . .
-WORKDIR "/src/TwelveFactor"
-RUN dotnet build "TwelveFactor.csproj" -c Release -o /app/build
+WORKDIR /DockerSource
 
-FROM build AS publish
-RUN dotnet publish "TwelveFactor.csproj" -c Release -o /app/publish
+# Copy csproj and restore as distinct layers
+COPY *.sln .
+COPY TwelveFactor/TwelveFactor.csproj ./TwelveFactor/
+RUN dotnet restore
 
-FROM base AS final
-WORKDIR /app
-COPY --from=publish /app/publish .
+# Copy everything else and build website
+COPY ./. ./TwelveFactor/
+WORKDIR /DockerSource/TwelveFactor
+RUN dotnet publish -c release -o /DockerOutput/Website
+
+# Final stage
+FROM mcr.microsoft.com/dotnet/aspnet:5.0
+WORKDIR /DockerOutput/Website
+COPY --from=build /DockerOutput/Website ./
 ENTRYPOINT ["dotnet", "TwelveFactor.dll"]

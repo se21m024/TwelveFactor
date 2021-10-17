@@ -1,9 +1,4 @@
 ﻿namespace TwelveFactor.Models.Api
 {
-    public class UserResponse
-    {
-        public int Id { get; set; }
-
-        public string Name { get; set; }
-    }
+    public record UserResponse(int Id, string Name);
 }
