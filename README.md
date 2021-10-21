@@ -3,7 +3,7 @@
 ## Readme
 ### Author: se21m024
 <br/><br/>
-This project has a public GitHub repository:
+This project has a GitHub repository:
 https://github.com/se21m024/TwelveFactor
 <br/><br/>
 TODO

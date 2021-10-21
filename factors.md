@@ -7,7 +7,7 @@
 ## Requirement
 One codebase tracked in revision control, many deploys
 ## Solution (DONE)
-A public GitHub reposotory was created to track the code base. Various commits have been made.<br/>
+A GitHub repository was created to track the code base. Various commits have been made.<br/>
 https://github.com/se21m024/TwelveFactor
 <br/><br/>
 
