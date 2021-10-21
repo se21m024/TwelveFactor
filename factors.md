@@ -3,6 +3,7 @@
 ## The Twelve Factors
 ### Author: se21m024
 <br/><br/>
+
 # I. Codebase
 ## Requirement
 One codebase tracked in revision control, many deploys
@@ -14,10 +15,10 @@ https://github.com/se21m024/TwelveFactor
 # II. Dependencies
 ## Requriement
 Explicitly declare and isolate dependencies
-## Solution
+## Solution (DONE)
 .csproj mit den verlinkten Abhängigkeiten NuGet
 Wie schaut es mit System Libs aus?
-RUN dotnet publish -c release -o /DockerOutput/Website --self-contained
+RUN dotnet publish -c release -o /DockerOutput/Website --self-contained -r ubuntu.20.04-x64
 -> --self-contained beim publishen
 todo
 <br/><br/>
@@ -27,7 +28,8 @@ todo
 Store config in the environment
 ## Solution (DONE)
 Environment.GetEnvironmentVariable("USERNAME");
-todo: paste in startup script
+todo: paste in startup script:
+docker run --rm -it -p 6023:80 --name twelvefactor-app -e USERNAME=TomsTom twelvefactorbuild
 <br/><br/>
 
 # IV. Backing services
@@ -40,8 +42,9 @@ todo
 # V. Build, release, run
 ## Requriement
 Strictly separate build and run stages
-## Solution
+## Solution (DONE)
 lt. Video: Release = Build nehmen und mit konfigurierten Env. Variablen kombinieren, damit die fertige Anwednung in weiterer Folge fix fertig gestartet werden kann.
+Use --build-arg during docker build
 todo
 <br/><br/>
 
@@ -51,16 +54,17 @@ Execute the app as one or more stateless processes
 ## Solution
 Rest Server.
 lt. video muss Jeder Prozess self contained sein
+
 todo
 <br/><br/>
 
 # VII. Port binding
 ## Requriement
 Export services via port binding
-## Solution
+## Solution (DONE)
 The container port 80 was bound to the host port 6000 (in the Rider debug settings).
 ws wird als api nach außen angeboten.
-todo
+todo: in start script reinschreiben
 <br/><br/>
 
 # VIII. Concurrency
