@@ -17,14 +17,17 @@ Explicitly declare and isolate dependencies
 ## Solution
 .csproj mit den verlinkten Abhängigkeiten NuGet
 Wie schaut es mit System Libs aus?
+RUN dotnet publish -c release -o /DockerOutput/Website --self-contained
+-> --self-contained beim publishen
 todo
 <br/><br/>
 
 # III. Config
 ## Requriement
 Store config in the environment
-## Solution
-todo
+## Solution (DONE)
+Environment.GetEnvironmentVariable("USERNAME");
+todo: paste in startup script
 <br/><br/>
 
 # IV. Backing services
@@ -80,7 +83,7 @@ todo
 # X. Dev/prod parity
 ## Requriement
 Keep development, staging, and production as similar as possible
-## Solution
+## Solution (DONE)
 todo
 While developing the project in JetBrains Rider, the app was deployed to a local Docker container for debugging (https://blog.jetbrains.com/dotnet/2018/07/18/debugging-asp-net-core-apps-local-docker-container/). As the app is deployed as a Docker container, the production environment and the development (and staging) environemtn ar as similar as possible.
 <br/><br/>
@@ -88,7 +91,7 @@ While developing the project in JetBrains Rider, the app was deployed to a local
 # XI. Logs
 ## Requriement
 Treat logs as event streams
-## Solution
+## Solution (DONE)
 ConfigureLogging -> AddConsole
 todo
 <br/><br/>

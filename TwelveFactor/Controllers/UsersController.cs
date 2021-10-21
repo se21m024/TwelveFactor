@@ -28,12 +28,13 @@ namespace TwelveFactor.Controllers
             try
             {
                 // Throw random error
-                if (new Random().Next(1, 2) % 2 == 0)
-                {
-                    throw new Exception("Service crashed.");
-                }
-                
-                return new List<UserResponse> {new UserResponse(3, "Tom"),};
+                // if (new Random().Next(0, 2) % 2 == 0)
+                // {
+                //     throw new Exception("Service crashed.");
+                // }
+                var username = Environment.GetEnvironmentVariable("USERNAME");
+                _logger.LogInformation($"Returning username <{username}>.");
+                return new List<UserResponse> {new UserResponse(3, username),};
             }
             catch (Exception e)
             {

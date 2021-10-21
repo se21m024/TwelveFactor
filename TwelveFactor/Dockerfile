@@ -10,7 +10,7 @@ RUN dotnet restore
 # Copy everything else and build website
 COPY ./. ./TwelveFactor/
 WORKDIR /DockerSource/TwelveFactor
-RUN dotnet publish -c release -o /DockerOutput/Website
+RUN dotnet publish -c release -o /DockerOutput/Website --self-contained
 
 # Final stage
 FROM mcr.microsoft.com/dotnet/aspnet:5.0
