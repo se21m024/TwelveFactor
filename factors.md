@@ -15,6 +15,8 @@ https://github.com/se21m024/TwelveFactor
 ## Requriement
 Explicitly declare and isolate dependencies
 ## Solution
+.csproj mit den verlinkten Abhängigkeiten NuGet
+Wie schaut es mit System Libs aus?
 todo
 <br/><br/>
 
@@ -36,6 +38,7 @@ todo
 ## Requriement
 Strictly separate build and run stages
 ## Solution
+lt. Video: Release = Build nehmen und mit konfigurierten Env. Variablen kombinieren, damit die fertige Anwednung in weiterer Folge fix fertig gestartet werden kann.
 todo
 <br/><br/>
 
@@ -43,6 +46,8 @@ todo
 ## Requriement
 Execute the app as one or more stateless processes
 ## Solution
+Rest Server.
+lt. video muss Jeder Prozess self contained sein
 todo
 <br/><br/>
 
@@ -51,6 +56,7 @@ todo
 Export services via port binding
 ## Solution
 The container port 80 was bound to the host port 6000 (in the Rider debug settings).
+ws wird als api nach außen angeboten.
 todo
 <br/><br/>
 
@@ -58,6 +64,8 @@ todo
 ## Requriement
 Scale out via the process model
 ## Solution
+Es muss möglich sein, mehere Instanzen der App-Prozesse gleichzeitig zu starten, ohne dass sie sich in die Quere kommen. -> wird erreicht, da der Service statless ist und alle Prozesse auf dieselbe DB zugreifen, die gleichzeitigen (fake) Zugriff unterstützt.
+theoretisch könnte man die Hochskalierung mit Kubernetes umsetzen.
 todo
 <br/><br/>
 
@@ -65,6 +73,7 @@ todo
 ## Requriement
 Maximize robustness with fast startup and graceful shutdown
 ## Solution
+ASP.NET already. Using canellation tokens for all long running tasks or IO bound tasks.
 todo
 <br/><br/>
 
@@ -80,6 +89,7 @@ While developing the project in JetBrains Rider, the app was deployed to a local
 ## Requriement
 Treat logs as event streams
 ## Solution
+ConfigureLogging -> AddConsole
 todo
 <br/><br/>
 
