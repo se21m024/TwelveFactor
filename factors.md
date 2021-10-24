@@ -81,6 +81,7 @@ todo
 Maximize robustness with fast startup and graceful shutdown
 ## Solution
 ASP.NET already. Using canellation tokens for all long running tasks or IO bound tasks.
+https://www.ctl.io/developers/blog/post/gracefully-stopping-docker-containers/ ???
 todo
 <br/><br/>
 
