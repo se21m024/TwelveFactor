@@ -27,7 +27,7 @@ The app was build self-contained so all dependencies (even System.* libraries) a
 <br/>
 <br/>
 Dockerfile build command:
-
+<br/>
 RUN dotnet publish -c release -o /DockerOutput/Website --self-contained -r ubuntu.20.04-x64
 <br/>
 <br/>
@@ -65,7 +65,7 @@ ENV GETNEWGUIDDELAYMS=$get_new_guid_delay_ms
 <br/>
 The environment variables can also be (optionally) set by passing them directly to docker run when starting the app:
 
-docker run --rm -it -p 6000:80 --name twelvefactor-app -e UPPERCASEGUIDS=false -e GETNEWGUIDDELAYMS=10000 twelvefactor-image:1.0
+docker run --rm -it -p 6100:80 --name twelvefactor-app -e UPPERCASEGUIDS=false -e GETNEWGUIDDELAYMS=10000 twelvefactor-image:1.0
 <br/>
 <br/>
 
@@ -84,7 +84,7 @@ Strictly separate build and run stages
 The app configuration (in this case the environment variable UPPERCASEGUIDS) can be set during the image build process (build stage) as well when starting the app (run stage).
 <br/>
 * Build stage: The image is built (docker build).
-* Release stage: The tagged image is distributed (provide the image e.g. as file: TODO: insert dropbox link!).
+* Release stage: The tagged image is distributed (provide the image e.g. as file: https://drive.google.com/uc?id=1O7qPQ-fbq7t3bYQJ389WAPuJmeECIrxi&export=download).
 * Run stage: The tagged image is started within a container (docker run).
 <br/>
 <br/>
@@ -101,9 +101,9 @@ The app is a self-hosted, self-contained, stateless ASP.NET 5 REST API.
 ## Requirement
 Export services via port binding
 ## Solution (IMPLEMENTED #6)
-The container port 80 was bound to the host port 6000.
+The container port 80 was bound to the host port 6100.
 During development, this was achieved by configuring the port binding in the JetBrains Rider debug settings.
-In staging / production this is achieved by explicitly setting the docker run parameter '-p 6000:80'.
+In staging / production this is achieved by explicitly setting the docker run parameter '-p 6100:80'.
 <br/>
 <br/>
 
